@@ -1,0 +1,4 @@
+selenium==4.1
+requests
+BeautifulSoup4
+datetime
