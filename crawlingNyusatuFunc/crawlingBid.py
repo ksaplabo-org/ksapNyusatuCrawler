@@ -14,7 +14,6 @@ from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.common.by import By
 from selenium.webdriver.common.keys import Keys
 
-import win32com.client
 import datetime
 
 import glob
@@ -25,23 +24,27 @@ import shutil
 
 difference_all = []
 
-dpath = os.getcwd()
+if 'on_lambda' in os.environ:
+  dpath = '/tmp/'
+else:
+  dpath = os.getcwd() + '/'
+
 # URL確認対象パス
-urlPath = dpath + "/url/"
+urlPath = dpath + "url/"
 # 前回確認結果パス
-beforePath = dpath + "/output/before/"
+beforePath = dpath + "output/before/"
 # 差分結果パス
-differencePath = dpath + "/output/difference/"
-#メール情報テキスト格納パス
-mail_path = dpath + "/mail/"
+differencePath = dpath + "output/difference/"
 #csvファイル名称
 csv_file_name = 'difference_all.csv'
 #メール配信用フォルダ
-setMailPath = dpath + "/mail_file/"
+setMailPath = dpath + "mail_file/"
 #配信用ファイル名称
 send_file_name="Hokkaido.csv"
 # ログファイルパス
-logPath = dpath + "/log/execLog.txt"
+logPath = dpath + "log/"
+# ログファイルパス
+log_file_name = "execLog.txt"
 
 # 正常終了メッセージ
 trueEnd = "正常終了"
@@ -53,10 +56,12 @@ def main(args):
 
     os.makedirs(beforePath, exist_ok=True)
     os.makedirs(differencePath, exist_ok=True)
+    os.makedirs(logPath, exist_ok=True)
+    os.makedirs(setMailPath, exist_ok=True)
 
     # 開始ログ出力
-    logPut(logPath,'\n')
-    logPut(logPath,'北海道案件検索処理開始 ' + datetime.datetime.now().strftime('%Y/%m/%d %H:%M:%S'))
+    logPut('\n')
+    logPut('北海道案件検索処理開始 ' + datetime.datetime.now().strftime('%Y/%m/%d %H:%M:%S'))
 
     # URL確認対象の取得
     with open(urlPath + 'url.csv', 'r', encoding='shift_jis') as csvfile:
@@ -104,7 +109,7 @@ def main(args):
     moveCSVFile(differencePath + csv_file_name)
 
     # 終了ログ書き込み
-    logPut(logPath,'北海道案件検索処理終了 ' + datetime.datetime.now().strftime('%Y/%m/%d %H:%M:%S'))
+    logPut('北海道案件検索処理終了 ' + datetime.datetime.now().strftime('%Y/%m/%d %H:%M:%S'))
 
     print("end")
 
@@ -162,10 +167,10 @@ def moveCSVFile(TargetPath):
     shutil.copy(TargetPath, setMailPath + now_date + '_' + send_file_name)
 
 # ログファイル書き込み処理
-def logPut(logFilePath,strPut):
+def logPut(strPut):
 
   # ログファイルオープン
-  f = open(logFilePath, 'a', encoding='UTF-8')
+  f = open(logPath + log_file_name, 'a', encoding='UTF-8')
 
   # 任意文字列の書き込み
   f.write(strPut + '\n')
@@ -201,7 +206,7 @@ def poly(name, url):
 
   finally:
     # ログ書き込み
-    logPut(logPath,name + " " + execMsg)
+    logPut(name + " " + execMsg)
 
   return result
 
@@ -230,7 +235,7 @@ def hkd(name, url):
 
   finally:
     # ログ書き込み
-    logPut(logPath,name + " " + execMsg)
+    logPut(name + " " + execMsg)
 
   return result
 
@@ -256,7 +261,7 @@ def spmdu(name, url):
 
   finally:
     # ログ書き込み
-    logPut(logPath,name + " " + execMsg)
+    logPut(name + " " + execMsg)
 
   return result
 
@@ -282,7 +287,7 @@ def spkhtknst(name, url):
 
   finally:
     # ログ書き込み
-    logPut(logPath,name + " " + execMsg)
+    logPut(name + " " + execMsg)
 
   return result
 
@@ -315,7 +320,7 @@ def sphsptl(name, url):
 
   finally:
     # ログ書き込み
-    logPut(logPath,name + " " + execMsg)
+    logPut(name + " " + execMsg)
 
   return result
 
@@ -345,7 +350,7 @@ def spkyk(name, url):
 
   finally:
     # ログ書き込み
-    logPut(logPath,name + " " + execMsg)
+    logPut(name + " " + execMsg)
 
   return result
 
