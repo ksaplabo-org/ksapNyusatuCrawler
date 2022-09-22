@@ -1,0 +1,1593 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
+<meta name="generator" content="pdoc 0.10.0" />
+<title>crawlingBid API documentation</title>
+<meta name="description" content="" />
+<link rel="preload stylesheet" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/11.0.1/sanitize.min.css" integrity="sha256-PK9q560IAAa6WVRRh76LtCaI8pjTJ2z11v0miyNNjrs=" crossorigin>
+<link rel="preload stylesheet" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/11.0.1/typography.min.css" integrity="sha256-7l/o7C8jubJiy74VsKTidCy1yBkRtiUGbVkYBylBqUg=" crossorigin>
+<link rel="stylesheet preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/styles/github.min.css" crossorigin>
+<style>:root{--highlight-color:#fe9}.flex{display:flex !important}body{line-height:1.5em}#content{padding:20px}#sidebar{padding:30px;overflow:hidden}#sidebar > *:last-child{margin-bottom:2cm}.http-server-breadcrumbs{font-size:130%;margin:0 0 15px 0}#footer{font-size:.75em;padding:5px 30px;border-top:1px solid #ddd;text-align:right}#footer p{margin:0 0 0 1em;display:inline-block}#footer p:last-child{margin-right:30px}h1,h2,h3,h4,h5{font-weight:300}h1{font-size:2.5em;line-height:1.1em}h2{font-size:1.75em;margin:1em 0 .50em 0}h3{font-size:1.4em;margin:25px 0 10px 0}h4{margin:0;font-size:105%}h1:target,h2:target,h3:target,h4:target,h5:target,h6:target{background:var(--highlight-color);padding:.2em 0}a{color:#058;text-decoration:none;transition:color .3s ease-in-out}a:hover{color:#e82}.title code{font-weight:bold}h2[id^="header-"]{margin-top:2em}.ident{color:#900}pre code{background:#f8f8f8;font-size:.8em;line-height:1.4em}code{background:#f2f2f1;padding:1px 4px;overflow-wrap:break-word}h1 code{background:transparent}pre{background:#f8f8f8;border:0;border-top:1px solid #ccc;border-bottom:1px solid #ccc;margin:1em 0;padding:1ex}#http-server-module-list{display:flex;flex-flow:column}#http-server-module-list div{display:flex}#http-server-module-list dt{min-width:10%}#http-server-module-list p{margin-top:0}.toc ul,#index{list-style-type:none;margin:0;padding:0}#index code{background:transparent}#index h3{border-bottom:1px solid #ddd}#index ul{padding:0}#index h4{margin-top:.6em;font-weight:bold}@media (min-width:200ex){#index .two-column{column-count:2}}@media (min-width:300ex){#index .two-column{column-count:3}}dl{margin-bottom:2em}dl dl:last-child{margin-bottom:4em}dd{margin:0 0 1em 3em}#header-classes + dl > dd{margin-bottom:3em}dd dd{margin-left:2em}dd p{margin:10px 0}.name{background:#eee;font-weight:bold;font-size:.85em;padding:5px 10px;display:inline-block;min-width:40%}.name:hover{background:#e0e0e0}dt:target .name{background:var(--highlight-color)}.name > span:first-child{white-space:nowrap}.name.class > span:nth-child(2){margin-left:.4em}.inherited{color:#999;border-left:5px solid #eee;padding-left:1em}.inheritance em{font-style:normal;font-weight:bold}.desc h2{font-weight:400;font-size:1.25em}.desc h3{font-size:1em}.desc dt code{background:inherit}.source summary,.git-link-div{color:#666;text-align:right;font-weight:400;font-size:.8em;text-transform:uppercase}.source summary > *{white-space:nowrap;cursor:pointer}.git-link{color:inherit;margin-left:1em}.source pre{max-height:500px;overflow:auto;margin:0}.source pre code{font-size:12px;overflow:visible}.hlist{list-style:none}.hlist li{display:inline}.hlist li:after{content:',\2002'}.hlist li:last-child:after{content:none}.hlist .hlist{display:inline;padding-left:1em}img{max-width:100%}td{padding:0 .5em}.admonition{padding:.1em .5em;margin-bottom:1em}.admonition-title{font-weight:bold}.admonition.note,.admonition.info,.admonition.important{background:#aef}.admonition.todo,.admonition.versionadded,.admonition.tip,.admonition.hint{background:#dfd}.admonition.warning,.admonition.versionchanged,.admonition.deprecated{background:#fd4}.admonition.error,.admonition.danger,.admonition.caution{background:lightpink}</style>
+<style media="screen and (min-width: 700px)">@media screen and (min-width:700px){#sidebar{width:30%;height:100vh;overflow:auto;position:sticky;top:0}#content{width:70%;max-width:100ch;padding:3em 4em;border-left:1px solid #ddd}pre code{font-size:1em}.item .name{font-size:1em}main{display:flex;flex-direction:row-reverse;justify-content:flex-end}.toc ul ul,#index ul{padding-left:1.5em}.toc > ul > li{margin-top:.5em}}</style>
+<style media="print">@media print{#sidebar h1{page-break-before:always}.source{display:none}}@media print{*{background:transparent !important;color:#000 !important;box-shadow:none !important;text-shadow:none !important}a[href]:after{content:" (" attr(href) ")";font-size:90%}a[href][title]:after{content:none}abbr[title]:after{content:" (" attr(title) ")"}.ir a:after,a[href^="javascript:"]:after,a[href^="#"]:after{content:""}pre,blockquote{border:1px solid #999;page-break-inside:avoid}thead{display:table-header-group}tr,img{page-break-inside:avoid}img{max-width:100% !important}@page{margin:0.5cm}p,h2,h3{orphans:3;widows:3}h1,h2,h3,h4,h5,h6{page-break-after:avoid}}</style>
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/highlight.min.js" integrity="sha256-Uv3H6lx7dJmRfRvH8TH6kJD1TSK1aFcwgx+mdg3epi8=" crossorigin></script>
+<script>window.addEventListener('DOMContentLoaded', () => hljs.initHighlighting())</script>
+</head>
+<body>
+<main>
+<article id="content">
+<header>
+<h1 class="title">Module <code>crawlingBid</code></h1>
+</header>
+<section id="section-intro">
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python"># coding: UTF-8
+
+import shutil
+import glob
+import datetime
+# from selenium.webdriver.common.keys import Keys
+# from selenium.webdriver.common.by import By
+# from selenium.webdriver.support import expected_conditions as EC
+# from selenium.webdriver.support.ui import WebDriverWait
+# from selenium.webdriver.chrome.options import Options
+from selenium import webdriver
+from bs4 import BeautifulSoup
+import requests
+import csv
+import os
+import sys
+sys.path.append(&#34;lib.bs4&#34;)
+
+
+difference_all = []
+
+if &#39;on_lambda&#39; in os.environ:
+    dpath = &#39;/tmp/&#39;
+else:
+    dpath = os.getcwd() + &#39;/&#39;
+
+# URL確認対象パス
+urlPath = dpath + &#34;url/&#34;
+# 前回確認結果パス
+beforePath = dpath + &#34;output/before/&#34;
+# 差分結果パス
+differencePath = dpath + &#34;output/difference/&#34;
+# csvファイル名称
+csv_file_name = &#39;difference_all.csv&#39;
+# メール配信用フォルダ
+setMailPath = dpath + &#34;mail_file/&#34;
+# 配信用ファイル名称
+send_file_name = &#34;Hokkaido.csv&#34;
+# ログファイルパス
+logPath = dpath + &#34;log/&#34;
+# ログファイルパス
+log_file_name = &#34;execLog.txt&#34;
+
+# 正常終了メッセージ
+trueEnd = &#34;正常終了&#34;
+# 異常検知メッセージ
+badEnd = &#34;異常検知&#34;
+
+
+def main():
+    &#34;&#34;&#34;メイン処理
+    &#34;&#34;&#34;
+
+    print(&#34;start&#34;)
+
+    # ワークフォルダを作成
+    os.makedirs(beforePath, exist_ok=True)
+    os.makedirs(differencePath, exist_ok=True)
+    os.makedirs(logPath, exist_ok=True)
+    os.makedirs(setMailPath, exist_ok=True)
+
+    # 開始ログ出力
+    logPut(&#39;\n&#39;)
+    logPut(&#39;北海道案件検索処理開始 &#39; + datetime.datetime.now()
+           .strftime(&#39;%Y/%m/%d %H:%M:%S&#39;))
+
+    # URL確認対象の取得
+    with open(urlPath + &#39;url.csv&#39;, &#39;r&#39;, encoding=&#39;shift_jis&#39;) as csvfile:
+        url_csv = csv.reader(csvfile, delimiter=&#39;,&#39;, quotechar=&#39;&#34;&#39;)
+        for uRow in url_csv:
+            name = uRow[0]
+            scrapingType = uRow[1]
+            url = uRow[2]
+
+            # 情報取得
+            result = scraping(name, scrapingType, url)
+
+            # 前回の取得時に存在していたかチェック
+            differenceList = []
+            if os.path.exists(beforePath + scrapingType + &#39;.csv&#39;):
+                for nRow in result:
+                    # 前回確認結果の取得
+                    with open(beforePath + scrapingType + &#39;.csv&#39;, &#39;r&#39;,
+                              encoding=&#39;utf-16&#39;) as csvfile2:
+                        before_csv = csv.reader(
+                            csvfile2, delimiter=&#39;,&#39;, quotechar=&#39;&#34;&#39;)
+                        if nRow not in before_csv:
+                            differenceList.append(nRow)
+            else:
+                differenceList = result
+
+            # 差分結果パスに書き込み
+            with open(differencePath + scrapingType + &#39;.csv&#39;, &#39;w&#39;,
+                      encoding=&#39;utf-16&#39;, errors=&#34;ignore&#34;) as w:
+                writer = csv.writer(w, lineterminator=&#39;\n&#39;)
+                writer.writerows(differenceList)
+
+            # サマリ用
+            for difference in differenceList:
+                difference_all.append(
+                    [name, url+&#39; &#39;, difference[0], difference[1]])
+
+            # 前回確認結果パスに書き込み
+            with open(beforePath + scrapingType + &#39;.csv&#39;, &#39;w&#39;,
+                      encoding=&#39;utf-16&#39;, errors=&#34;ignore&#34;) as w:
+                writer = csv.writer(w, lineterminator=&#39;\n&#39;)
+                writer.writerows(result)
+
+    # 差分結果パスに書き込み(サマリ用)
+    with open(differencePath + csv_file_name, &#39;w&#39;, encoding=&#39;utf-16&#39;,
+              errors=&#34;ignore&#34;) as w:
+        writer = csv.writer(w, lineterminator=&#39;\n&#39;)
+        writer.writerows(difference_all)
+
+    # 書き込んだcsvファイルを、メール配信用フォルダへ移動
+    moveCSVFile(differencePath + csv_file_name)
+
+    # 終了ログ書き込み
+    logPut(&#39;北海道案件検索処理終了 &#39; + datetime.datetime.now().
+           strftime(&#39;%Y/%m/%d %H:%M:%S&#39;))
+
+    print(&#34;end&#34;)
+
+
+def scraping(name, scrapingType, url):
+    &#34;&#34;&#34;スクレイピング処理root
+
+    Args:
+        name (str): 事業者名
+        scrapingType (str): 事業者の種別(spmdu、spsdkなど)
+        url (str): URL
+
+    Returns:
+        list: スクレイピング結果
+    &#34;&#34;&#34;
+
+    if scrapingType == &#34;poly&#34;:
+        return poly(name, url)
+    elif scrapingType == &#34;hkd.mlit&#34;:
+        return hkd(name, url)
+    elif scrapingType == &#34;spmdu&#34;:
+        return spmdu(name, url)
+    elif scrapingType == &#34;spkhtknst&#34;:
+        return spkhtknst(name, url)
+    elif scrapingType == &#34;sphsptl&#34;:
+        return sphsptl(name, url)
+    elif scrapingType == &#34;spkyk&#34;:
+        return spkyk(name, url)
+    # elif scrapingType == &#34;spsmk&#34;:
+    #    return spsmk(name, url)
+    # elif scrapingType == &#34;hkdclg&#34;:
+    #    return hkdclg(name, url)
+    # elif scrapingType == &#34;spsdk&#34;:
+    #    return spsdk(name, url)
+    else:
+        return noneUrl(&#34;&#34;)
+
+
+def getCsvPath(getName):
+    &#34;&#34;&#34;画面遷移系の各種URL取得
+
+    Args:
+        getName (str): 事業者の種別(spmdu、spsdkなど)
+
+    Returns:
+        str: 事業者のURL
+    &#34;&#34;&#34;
+
+    with open(
+            urlPath + &#39;target_url.csv&#39;, &#39;r&#39;,
+            encoding=&#39;shift_jis&#39;) as csvfile:
+        url_csv = csv.reader(csvfile, delimiter=&#39;,&#39;, quotechar=&#39;&#34;&#39;)
+        # Csvファイル一行ずつループ
+        for uRow in url_csv:
+            scrapingType = uRow[1]
+            url = uRow[2]
+            # スクレイピング項目が対象ページであった場合、URLを返却する
+            if scrapingType == getName:
+                target_url = url
+
+    return (target_url)
+
+
+def moveCSVFile(TargetPath):
+    &#34;&#34;&#34;メール配信フォルダへ移動
+
+    Args:
+        TargetPath (str): 移動するファイルのフルパス
+
+    &#34;&#34;&#34;
+
+    # 配信フォルダにある古いファイルを削除
+    file_path = glob.glob(setMailPath + &#39;*&#39; + csv_file_name)
+    if len(file_path) &gt; 0:
+        for filename in file_path:
+            os.remove(filename)
+
+    # ファイル名称用本日日付
+    now_date = datetime.datetime.now().strftime(&#34;%Y%m%d&#34;)
+
+    # ファイルリネームコピー
+    shutil.copy(TargetPath, setMailPath + now_date + &#39;_&#39; + send_file_name)
+
+# ログファイル書き込み処理
+
+
+def logPut(strPut):
+    &#34;&#34;&#34;ログ出力処理
+
+    Args:
+        strPut (str): ログ出力内容
+
+    &#34;&#34;&#34;
+
+    # ログファイルオープン
+    f = open(logPath + log_file_name, &#39;a&#39;, encoding=&#39;UTF-8&#39;)
+
+    # 任意文字列の書き込み
+    f.write(strPut + &#39;\n&#39;)
+
+    # ログファイルクローズ
+    f.close()
+
+
+def noneUrl(url):
+    &#34;&#34;&#34;スクレイピング処理（noneURL）
+
+    Args:
+        url (str): 未使用。
+
+    Returns:
+        list: 収集結果リスト（空）
+    &#34;&#34;&#34;
+
+    result = []
+    result.append([&#34;&#34;, &#34;&#34;])
+    return result
+
+
+def poly(name, url):
+    &#34;&#34;&#34;スクレイピング処理（ポリテクセンター北海道）
+
+    Args:
+        name (str): 参照先事業者名
+        url (str): 参照先URL
+
+    Returns:
+        list: 収集結果リスト
+    &#34;&#34;&#34;
+
+    result = []
+    try:
+        site = requests.get(url)
+        soup = BeautifulSoup(site.text, &#34;html.parser&#34;)
+
+        tables = soup.find_all(&#39;table&#39;, attrs={&#39;class&#39;: &#39;table1&#39;})
+        for table in tables:
+            date = table.find_all(&#39;td&#39;)[0].text
+            title = table.find_all(&#39;td&#39;)[1].text
+
+            result.append([date, title])
+    except Exception:
+        execMsg = badEnd
+    else:
+        execMsg = trueEnd
+
+    finally:
+        # ログ書き込み
+        logPut(name + &#34; &#34; + execMsg)
+
+    return result
+
+
+def hkd(name, url):
+    &#34;&#34;&#34;スクレイピング処理（北海道開発局（本局分））
+
+    Args:
+        name (str): 参照先事業者名
+        url (str): 参照先URL
+
+    Returns:
+        list: 収集結果リスト
+    &#34;&#34;&#34;
+
+    result = []
+
+    try:
+        site = requests.get(url)
+        soup = BeautifulSoup(site.content, &#34;html.parser&#34;)
+        # 物品の販売、製造　配下を取得
+        section = soup.find(id=&#34;s1&#34;)
+        h5s = section.find_all(&#34;h5&#34;)
+        for h5 in h5s:
+            lis = h5.next_element.next_element.next_element.find_all(&#34;li&#34;)
+            for li in lis:
+                date = h5.text
+                title = li.text
+
+                result.append([date, title])
+    except Exception:
+        execMsg = badEnd
+    else:
+        execMsg = trueEnd
+
+    finally:
+        # ログ書き込み
+        logPut(name + &#34; &#34; + execMsg)
+
+    return result
+
+
+def spmdu(name, url):
+    &#34;&#34;&#34;スクレイピング処理（札幌医科大学）
+
+    Args:
+        name (str): 参照先事業者名
+        url (str): 参照先URL
+
+    Returns:
+        list: 収集結果リスト
+    &#34;&#34;&#34;
+
+    result = []
+
+    try:
+        site = requests.get(url)
+        soup = BeautifulSoup(site.content, &#34;html.parser&#34;)
+
+        uls = soup.find(&#39;ul&#39;, attrs={&#39;class&#39;: &#39;entry&#39;})
+        lis = uls.find_all(&#39;li&#39;)
+        for li in lis:
+            date = li.find(&#39;time&#39;).text
+            title = li.find(&#39;p&#39;).text
+            result.append([date, title])
+    except Exception:
+        execMsg = badEnd
+    else:
+        execMsg = trueEnd
+
+    finally:
+        # ログ書き込み
+        logPut(name + &#34; &#34; + execMsg)
+
+    return result
+
+
+def spkhtknst(name, url):
+    &#34;&#34;&#34;スクレイピング処理（札幌開発建設部）
+
+    Args:
+        name (str): 参照先事業者名
+        url (str): 参照先URL
+
+    Returns:
+        list: 収集結果リスト
+    &#34;&#34;&#34;
+
+    result = []
+
+    try:
+        site = requests.get(url)
+        soup = BeautifulSoup(site.content, &#34;html.parser&#34;)
+
+        uls = soup.find(&#39;ul&#39;, attrs={&#39;class&#39;: &#39;iPapers&#39;})
+        lis = uls.find_all(&#39;li&#39;)
+        date = soup.find(&#39;p&#39;, attrs={&#39;class&#39;: &#39;lastDate&#39;}).text
+        for li in lis:
+            title = li.find(&#39;a&#39;).text
+            result.append([date, title])
+    except Exception:
+        execMsg = badEnd
+    else:
+        execMsg = trueEnd
+
+    finally:
+        # ログ書き込み
+        logPut(name + &#34; &#34; + execMsg)
+
+    return result
+
+
+def sphsptl(name, url):
+    &#34;&#34;&#34;スクレイピング処理（市立札幌病院）
+
+    Args:
+        name (str): 参照先事業者名
+        url (str): 参照先URL
+
+    Returns:
+        list: 収集結果リスト
+    &#34;&#34;&#34;
+
+    result = []
+
+    try:
+        site = requests.get(url)
+        soup = BeautifulSoup(site.content, &#34;html.parser&#34;)
+
+        tables = soup.find(&#39;table&#39;, attrs={&#39;cellspacing&#39;: &#39;1&#39;})
+        trs = tables.find_all(&#39;tr&#39;)
+        cnt = 0
+        for tr in trs:
+            # ヘッダーを読み飛ばす
+            if cnt != 0:
+                # 状況が募集中のみ
+                if tr.find_all(&#39;td&#39;)[0].text == &#34;募集中&#34;:
+                    date = tr.find_all(&#39;td&#39;)[1].text
+                    title = tr.find_all(&#39;td&#39;)[3].text
+
+                    result.append([date, title])
+            cnt = cnt + 1
+    except Exception:
+        execMsg = badEnd
+    else:
+        execMsg = trueEnd
+
+    finally:
+        # ログ書き込み
+        logPut(name + &#34; &#34; + execMsg)
+
+    return result
+
+
+def spkyk(name, url):
+    &#34;&#34;&#34;スクレイピング処理（札幌市教育委員会）
+
+    Args:
+        name (str): 参照先事業者名
+        url (str): 参照先URL
+
+    Returns:
+        list: 収集結果リスト
+    &#34;&#34;&#34;
+
+    result = []
+
+    try:
+        site = requests.get(url)
+        soup = BeautifulSoup(site.content, &#34;html.parser&#34;)
+
+        divid = soup.find(&#39;div&#39;, id=&#34;tmp_contents&#34;)
+        uls = divid.find(&#39;ul&#39;)
+        lis = uls.find_all(&#39;li&#39;)
+        date = soup.find(id=&#34;tmp_update&#34;).text
+        for li in lis:
+            if li.text == &#39;現在公募中の案件はありません&#39;:
+                break
+            else:
+                title = li.find(&#39;a&#39;).text
+                result.append([date, title])
+    except Exception:
+        execMsg = badEnd
+    else:
+        execMsg = trueEnd
+
+    finally:
+        # ログ書き込み
+        logPut(name + &#34; &#34; + execMsg)
+
+    return result
+
+
+def spsmk(url):
+    &#34;&#34;&#34;スクレイピング処理（札幌市総務局）
+
+    Args:
+        url (str): 参照先URL
+
+    Returns:
+        list: 収集結果リスト
+    &#34;&#34;&#34;
+
+    site = requests.get(url)
+    soup = BeautifulSoup(site.content, &#34;html.parser&#34;)
+
+    divid = soup.find(&#39;div&#39;, id=&#34;tmp_contents&#34;)
+    uls = divid.find(&#39;ul&#39;)
+    lis = uls.find_all(&#39;li&#39;)
+    date = soup.find(id=&#34;tmp_update&#34;).text
+    result = []
+    for li in lis:
+        if li.text == &#39;現在公募中の案件はありません&#39;:
+            break
+        else:
+            title = li.find(&#39;a&#39;).text
+            result.append([date, title])
+
+    return result
+
+
+# 北海道大学
+# def hkdclg(name, url):
+#  site = requests.get(url)
+#  soup = BeautifulSoup(site.content, &#34;html.parser&#34;)
+
+#  tables = soup.find(&#39;table&#39;, attrs={&#39;class&#39;: &#39;k_teisai&#39;})
+#  trs = tables.find_all(&#39;tr&#39;)
+#  result = []s
+#  for tr in trs:
+#    if tr.find_all(&#39;td&#39;)[0].find(&#39;font&#39;).text != &#34;物件番号&#34;:
+#    date = tr.find_all(&#39;td&#39;)[1].find(&#39;font&#39;).text
+#    title = tr.find_all(&#39;td&#39;)[3].find(&#39;font&#39;).text
+#    result.append([date,&#39; &#39;.join(title.splitlines())])
+
+#  return result
+
+
+# ドライバー読み込み。ブラウザ表示の場合に使用する
+def resource_path(relative_path):
+    try:
+        base_path = sys._MEIPASS
+    except Exception:
+        base_path = os.path.dirname(__file__)
+    return os.path.join(base_path, relative_path)
+
+# ボタン押下処理
+
+
+def target_click(url, tag_type, target):
+    &#34;&#34;&#34;ボタン押下処理
+
+    Args:
+        url (str): 操作するURLアドレス
+        tag_type (str): ボタンの要素種別(class、id、href...)
+        target (str): ボタンの要素名(class名、id名等)
+    &#34;&#34;&#34;
+    # ChromeDriver読み込み
+    driver = webdriver.Chrome(resource_path(&#39;./driver/chromedriver.exe&#39;))
+
+    # 10秒待機
+    driver.implicitly_wait(10)  # seconds
+
+    # 押下対象画面を開く
+    driver.get(url)
+    # 対象がclass
+    if tag_type == &#39;class&#39;:
+        element = driver.find_element_by_class_name(target)
+        element.click()
+    # 対象がid
+    elif tag_type == &#39;id&#39;:
+        element = driver.find_element_by_id(target)
+        element.click()
+    # href押下
+    elif tag_type == &#39;href&#39;:
+        pass
+    # その他
+    else:
+        element = driver.find_element_by_name(target)
+
+
+def spsdk(name, url):
+    &#34;&#34;&#34;スクレイピング処理（札幌市水道局）
+
+    Args:
+        name (str): 未使用
+        url (str): 参照先URL
+
+    Returns:
+        list: 収集結果リスト
+    &#34;&#34;&#34;
+
+    # ChromeDriver読み込み
+    driver = webdriver.Chrome(resource_path(&#39;./driver/chromedriver.exe&#39;))
+
+    # 10秒待機
+    driver.implicitly_wait(10)  # seconds
+
+    # トップページを開く
+    driver.get(url)
+
+    # トップページが開いた状態から、電子入札ボタンを押下
+    dns_click = getCsvPath(&#39;spsdk_dns1&#39;)
+    driver.get(dns_click)
+
+    # メニューフレームに操作を移行する
+    iframe = driver.find_element_by_name(&#39;menu_Frm&#39;)
+    driver.switch_to.frame(iframe)
+
+    # 案件画面から、メニューフレームの物品タグを開く
+    element_bpn = driver.find_element_by_id(&#39;menuObj_1&#39;)
+    element_bpn.click()
+
+    # 案件画面から、物販入札リスト画面への繊維タブ情報を取得し、疑似的に押下する
+    element = driver.find_element_by_id(&#39;menuObj_4&#39;)
+    element.click()
+
+    # もとのフレームに戻る
+    driver.switch_to.default_content()
+
+    # 20秒待機
+    driver.implicitly_wait(20)  # seconds
+
+    # 表示された画面から、メインフレームに操作を移行する
+    nframe = driver.find_element_by_name(&#39;mainfrm&#39;)
+    driver.switch_to.frame(nframe)
+
+    # 案件ページへのリンクが貼られた要素一覧を取得
+    ankn_tags = driver.find_elements_by_class_name(&#39;SUBSTANCE_ROW_NB&#39;)
+    result = []
+    aa_cnt = 1
+    for ankn_tag in ankn_tags:
+        # aタグが埋め込まれている場合
+        if aa_cnt == 1:
+            aas = ankn_tag.find_elements_by_tag_name(&#39;a&#39;)
+
+            if len(aas) != 0:
+                # aタグをクリック
+                ankn_tag.find_element_by_tag_name(&#39;a&#39;).click()
+
+                # 10秒待機
+                driver.implicitly_wait(10)  # seconds
+
+                # もとのフレームに戻る
+                driver.switch_to.default_content()
+
+                # 表示された画面から、メインフレームに操作を移行する
+                pframe = driver.find_element_by_name(&#39;mainfrm&#39;)
+                driver.switch_to.frame(pframe)
+
+                # 案件一覧が表示されているテーブルを取得
+                table = driver.find_element_by_class_name(&#39;borderTable.group&#39;)
+
+                # テーブルから、案件が記載された行一覧を取得
+                rows = table.find_elements_by_tag_name(&#39;tr&#39;)
+                cnt = 1
+                for row in rows:
+                    # 3行目まではヘッダー
+                    if row.text != &#39;&#39;:
+                        if cnt &gt; 2:
+                            if cnt % 2 != 0:  # 奇数行から案件番号、案件名を取得
+                                tds = row.find_elements_by_tag_name(&#39;td&#39;)
+                                ankn_no = tds[1].text
+                                ankn_nm = tds[2].text
+                            else:  # 偶数行から公示日を取得
+                                tds = row.find_elements_by_tag_name(&#39;td&#39;)
+                                date = tds[3].text
+                                result.append([date, ankn_no + &#39;_&#39; + ankn_nm])
+                        cnt = cnt + 1
+                aa_cnt = aa_cnt + 1
+
+    return result
+
+
+if __name__ == &#39;__main__&#39;:
+    &#34;&#34;&#34;メイン処理（ローカル実行）
+    &#34;&#34;&#34;
+    try:
+        args = sys.argv
+        if 1 &lt;= len(args):
+            main()
+        else:
+            print(&#39;Arguments are too short&#39;)
+    except Exception as e:
+        print(e)</code></pre>
+</details>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+<h2 class="section-title" id="header-functions">Functions</h2>
+<dl>
+<dt id="crawlingBid.getCsvPath"><code class="name flex">
+<span>def <span class="ident">getCsvPath</span></span>(<span>getName)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>画面遷移系の各種URL取得</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>getName</code></strong> :&ensp;<code>str</code></dt>
+<dd>事業者の種別(spmdu、spsdkなど)</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>str</code></dt>
+<dd>事業者のURL</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def getCsvPath(getName):
+    &#34;&#34;&#34;画面遷移系の各種URL取得
+
+    Args:
+        getName (str): 事業者の種別(spmdu、spsdkなど)
+
+    Returns:
+        str: 事業者のURL
+    &#34;&#34;&#34;
+
+    with open(
+            urlPath + &#39;target_url.csv&#39;, &#39;r&#39;,
+            encoding=&#39;shift_jis&#39;) as csvfile:
+        url_csv = csv.reader(csvfile, delimiter=&#39;,&#39;, quotechar=&#39;&#34;&#39;)
+        # Csvファイル一行ずつループ
+        for uRow in url_csv:
+            scrapingType = uRow[1]
+            url = uRow[2]
+            # スクレイピング項目が対象ページであった場合、URLを返却する
+            if scrapingType == getName:
+                target_url = url
+
+    return (target_url)</code></pre>
+</details>
+</dd>
+<dt id="crawlingBid.hkd"><code class="name flex">
+<span>def <span class="ident">hkd</span></span>(<span>name, url)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>スクレイピング処理（北海道開発局（本局分））</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>name</code></strong> :&ensp;<code>str</code></dt>
+<dd>参照先事業者名</dd>
+<dt><strong><code>url</code></strong> :&ensp;<code>str</code></dt>
+<dd>参照先URL</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>list</code></dt>
+<dd>収集結果リスト</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def hkd(name, url):
+    &#34;&#34;&#34;スクレイピング処理（北海道開発局（本局分））
+
+    Args:
+        name (str): 参照先事業者名
+        url (str): 参照先URL
+
+    Returns:
+        list: 収集結果リスト
+    &#34;&#34;&#34;
+
+    result = []
+
+    try:
+        site = requests.get(url)
+        soup = BeautifulSoup(site.content, &#34;html.parser&#34;)
+        # 物品の販売、製造　配下を取得
+        section = soup.find(id=&#34;s1&#34;)
+        h5s = section.find_all(&#34;h5&#34;)
+        for h5 in h5s:
+            lis = h5.next_element.next_element.next_element.find_all(&#34;li&#34;)
+            for li in lis:
+                date = h5.text
+                title = li.text
+
+                result.append([date, title])
+    except Exception:
+        execMsg = badEnd
+    else:
+        execMsg = trueEnd
+
+    finally:
+        # ログ書き込み
+        logPut(name + &#34; &#34; + execMsg)
+
+    return result</code></pre>
+</details>
+</dd>
+<dt id="crawlingBid.logPut"><code class="name flex">
+<span>def <span class="ident">logPut</span></span>(<span>strPut)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>ログ出力処理</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>strPut</code></strong> :&ensp;<code>str</code></dt>
+<dd>ログ出力内容</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def logPut(strPut):
+    &#34;&#34;&#34;ログ出力処理
+
+    Args:
+        strPut (str): ログ出力内容
+
+    &#34;&#34;&#34;
+
+    # ログファイルオープン
+    f = open(logPath + log_file_name, &#39;a&#39;, encoding=&#39;UTF-8&#39;)
+
+    # 任意文字列の書き込み
+    f.write(strPut + &#39;\n&#39;)
+
+    # ログファイルクローズ
+    f.close()</code></pre>
+</details>
+</dd>
+<dt id="crawlingBid.main"><code class="name flex">
+<span>def <span class="ident">main</span></span>(<span>)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>メイン処理</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def main():
+    &#34;&#34;&#34;メイン処理
+    &#34;&#34;&#34;
+
+    print(&#34;start&#34;)
+
+    # ワークフォルダを作成
+    os.makedirs(beforePath, exist_ok=True)
+    os.makedirs(differencePath, exist_ok=True)
+    os.makedirs(logPath, exist_ok=True)
+    os.makedirs(setMailPath, exist_ok=True)
+
+    # 開始ログ出力
+    logPut(&#39;\n&#39;)
+    logPut(&#39;北海道案件検索処理開始 &#39; + datetime.datetime.now()
+           .strftime(&#39;%Y/%m/%d %H:%M:%S&#39;))
+
+    # URL確認対象の取得
+    with open(urlPath + &#39;url.csv&#39;, &#39;r&#39;, encoding=&#39;shift_jis&#39;) as csvfile:
+        url_csv = csv.reader(csvfile, delimiter=&#39;,&#39;, quotechar=&#39;&#34;&#39;)
+        for uRow in url_csv:
+            name = uRow[0]
+            scrapingType = uRow[1]
+            url = uRow[2]
+
+            # 情報取得
+            result = scraping(name, scrapingType, url)
+
+            # 前回の取得時に存在していたかチェック
+            differenceList = []
+            if os.path.exists(beforePath + scrapingType + &#39;.csv&#39;):
+                for nRow in result:
+                    # 前回確認結果の取得
+                    with open(beforePath + scrapingType + &#39;.csv&#39;, &#39;r&#39;,
+                              encoding=&#39;utf-16&#39;) as csvfile2:
+                        before_csv = csv.reader(
+                            csvfile2, delimiter=&#39;,&#39;, quotechar=&#39;&#34;&#39;)
+                        if nRow not in before_csv:
+                            differenceList.append(nRow)
+            else:
+                differenceList = result
+
+            # 差分結果パスに書き込み
+            with open(differencePath + scrapingType + &#39;.csv&#39;, &#39;w&#39;,
+                      encoding=&#39;utf-16&#39;, errors=&#34;ignore&#34;) as w:
+                writer = csv.writer(w, lineterminator=&#39;\n&#39;)
+                writer.writerows(differenceList)
+
+            # サマリ用
+            for difference in differenceList:
+                difference_all.append(
+                    [name, url+&#39; &#39;, difference[0], difference[1]])
+
+            # 前回確認結果パスに書き込み
+            with open(beforePath + scrapingType + &#39;.csv&#39;, &#39;w&#39;,
+                      encoding=&#39;utf-16&#39;, errors=&#34;ignore&#34;) as w:
+                writer = csv.writer(w, lineterminator=&#39;\n&#39;)
+                writer.writerows(result)
+
+    # 差分結果パスに書き込み(サマリ用)
+    with open(differencePath + csv_file_name, &#39;w&#39;, encoding=&#39;utf-16&#39;,
+              errors=&#34;ignore&#34;) as w:
+        writer = csv.writer(w, lineterminator=&#39;\n&#39;)
+        writer.writerows(difference_all)
+
+    # 書き込んだcsvファイルを、メール配信用フォルダへ移動
+    moveCSVFile(differencePath + csv_file_name)
+
+    # 終了ログ書き込み
+    logPut(&#39;北海道案件検索処理終了 &#39; + datetime.datetime.now().
+           strftime(&#39;%Y/%m/%d %H:%M:%S&#39;))
+
+    print(&#34;end&#34;)</code></pre>
+</details>
+</dd>
+<dt id="crawlingBid.moveCSVFile"><code class="name flex">
+<span>def <span class="ident">moveCSVFile</span></span>(<span>TargetPath)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>メール配信フォルダへ移動</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>TargetPath</code></strong> :&ensp;<code>str</code></dt>
+<dd>移動するファイルのフルパス</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def moveCSVFile(TargetPath):
+    &#34;&#34;&#34;メール配信フォルダへ移動
+
+    Args:
+        TargetPath (str): 移動するファイルのフルパス
+
+    &#34;&#34;&#34;
+
+    # 配信フォルダにある古いファイルを削除
+    file_path = glob.glob(setMailPath + &#39;*&#39; + csv_file_name)
+    if len(file_path) &gt; 0:
+        for filename in file_path:
+            os.remove(filename)
+
+    # ファイル名称用本日日付
+    now_date = datetime.datetime.now().strftime(&#34;%Y%m%d&#34;)
+
+    # ファイルリネームコピー
+    shutil.copy(TargetPath, setMailPath + now_date + &#39;_&#39; + send_file_name)</code></pre>
+</details>
+</dd>
+<dt id="crawlingBid.noneUrl"><code class="name flex">
+<span>def <span class="ident">noneUrl</span></span>(<span>url)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>スクレイピング処理（noneURL）</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>url</code></strong> :&ensp;<code>str</code></dt>
+<dd>未使用。</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>list</code></dt>
+<dd>収集結果リスト（空）</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def noneUrl(url):
+    &#34;&#34;&#34;スクレイピング処理（noneURL）
+
+    Args:
+        url (str): 未使用。
+
+    Returns:
+        list: 収集結果リスト（空）
+    &#34;&#34;&#34;
+
+    result = []
+    result.append([&#34;&#34;, &#34;&#34;])
+    return result</code></pre>
+</details>
+</dd>
+<dt id="crawlingBid.poly"><code class="name flex">
+<span>def <span class="ident">poly</span></span>(<span>name, url)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>スクレイピング処理（ポリテクセンター北海道）</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>name</code></strong> :&ensp;<code>str</code></dt>
+<dd>参照先事業者名</dd>
+<dt><strong><code>url</code></strong> :&ensp;<code>str</code></dt>
+<dd>参照先URL</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>list</code></dt>
+<dd>収集結果リスト</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def poly(name, url):
+    &#34;&#34;&#34;スクレイピング処理（ポリテクセンター北海道）
+
+    Args:
+        name (str): 参照先事業者名
+        url (str): 参照先URL
+
+    Returns:
+        list: 収集結果リスト
+    &#34;&#34;&#34;
+
+    result = []
+    try:
+        site = requests.get(url)
+        soup = BeautifulSoup(site.text, &#34;html.parser&#34;)
+
+        tables = soup.find_all(&#39;table&#39;, attrs={&#39;class&#39;: &#39;table1&#39;})
+        for table in tables:
+            date = table.find_all(&#39;td&#39;)[0].text
+            title = table.find_all(&#39;td&#39;)[1].text
+
+            result.append([date, title])
+    except Exception:
+        execMsg = badEnd
+    else:
+        execMsg = trueEnd
+
+    finally:
+        # ログ書き込み
+        logPut(name + &#34; &#34; + execMsg)
+
+    return result</code></pre>
+</details>
+</dd>
+<dt id="crawlingBid.resource_path"><code class="name flex">
+<span>def <span class="ident">resource_path</span></span>(<span>relative_path)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def resource_path(relative_path):
+    try:
+        base_path = sys._MEIPASS
+    except Exception:
+        base_path = os.path.dirname(__file__)
+    return os.path.join(base_path, relative_path)</code></pre>
+</details>
+</dd>
+<dt id="crawlingBid.scraping"><code class="name flex">
+<span>def <span class="ident">scraping</span></span>(<span>name, scrapingType, url)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>スクレイピング処理root</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>name</code></strong> :&ensp;<code>str</code></dt>
+<dd>事業者名</dd>
+<dt><strong><code>scrapingType</code></strong> :&ensp;<code>str</code></dt>
+<dd>事業者の種別(spmdu、spsdkなど)</dd>
+<dt><strong><code>url</code></strong> :&ensp;<code>str</code></dt>
+<dd>URL</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>list</code></dt>
+<dd>スクレイピング結果</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def scraping(name, scrapingType, url):
+    &#34;&#34;&#34;スクレイピング処理root
+
+    Args:
+        name (str): 事業者名
+        scrapingType (str): 事業者の種別(spmdu、spsdkなど)
+        url (str): URL
+
+    Returns:
+        list: スクレイピング結果
+    &#34;&#34;&#34;
+
+    if scrapingType == &#34;poly&#34;:
+        return poly(name, url)
+    elif scrapingType == &#34;hkd.mlit&#34;:
+        return hkd(name, url)
+    elif scrapingType == &#34;spmdu&#34;:
+        return spmdu(name, url)
+    elif scrapingType == &#34;spkhtknst&#34;:
+        return spkhtknst(name, url)
+    elif scrapingType == &#34;sphsptl&#34;:
+        return sphsptl(name, url)
+    elif scrapingType == &#34;spkyk&#34;:
+        return spkyk(name, url)
+    # elif scrapingType == &#34;spsmk&#34;:
+    #    return spsmk(name, url)
+    # elif scrapingType == &#34;hkdclg&#34;:
+    #    return hkdclg(name, url)
+    # elif scrapingType == &#34;spsdk&#34;:
+    #    return spsdk(name, url)
+    else:
+        return noneUrl(&#34;&#34;)</code></pre>
+</details>
+</dd>
+<dt id="crawlingBid.sphsptl"><code class="name flex">
+<span>def <span class="ident">sphsptl</span></span>(<span>name, url)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>スクレイピング処理（市立札幌病院）</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>name</code></strong> :&ensp;<code>str</code></dt>
+<dd>参照先事業者名</dd>
+<dt><strong><code>url</code></strong> :&ensp;<code>str</code></dt>
+<dd>参照先URL</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>list</code></dt>
+<dd>収集結果リスト</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def sphsptl(name, url):
+    &#34;&#34;&#34;スクレイピング処理（市立札幌病院）
+
+    Args:
+        name (str): 参照先事業者名
+        url (str): 参照先URL
+
+    Returns:
+        list: 収集結果リスト
+    &#34;&#34;&#34;
+
+    result = []
+
+    try:
+        site = requests.get(url)
+        soup = BeautifulSoup(site.content, &#34;html.parser&#34;)
+
+        tables = soup.find(&#39;table&#39;, attrs={&#39;cellspacing&#39;: &#39;1&#39;})
+        trs = tables.find_all(&#39;tr&#39;)
+        cnt = 0
+        for tr in trs:
+            # ヘッダーを読み飛ばす
+            if cnt != 0:
+                # 状況が募集中のみ
+                if tr.find_all(&#39;td&#39;)[0].text == &#34;募集中&#34;:
+                    date = tr.find_all(&#39;td&#39;)[1].text
+                    title = tr.find_all(&#39;td&#39;)[3].text
+
+                    result.append([date, title])
+            cnt = cnt + 1
+    except Exception:
+        execMsg = badEnd
+    else:
+        execMsg = trueEnd
+
+    finally:
+        # ログ書き込み
+        logPut(name + &#34; &#34; + execMsg)
+
+    return result</code></pre>
+</details>
+</dd>
+<dt id="crawlingBid.spkhtknst"><code class="name flex">
+<span>def <span class="ident">spkhtknst</span></span>(<span>name, url)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>スクレイピング処理（札幌開発建設部）</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>name</code></strong> :&ensp;<code>str</code></dt>
+<dd>参照先事業者名</dd>
+<dt><strong><code>url</code></strong> :&ensp;<code>str</code></dt>
+<dd>参照先URL</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>list</code></dt>
+<dd>収集結果リスト</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def spkhtknst(name, url):
+    &#34;&#34;&#34;スクレイピング処理（札幌開発建設部）
+
+    Args:
+        name (str): 参照先事業者名
+        url (str): 参照先URL
+
+    Returns:
+        list: 収集結果リスト
+    &#34;&#34;&#34;
+
+    result = []
+
+    try:
+        site = requests.get(url)
+        soup = BeautifulSoup(site.content, &#34;html.parser&#34;)
+
+        uls = soup.find(&#39;ul&#39;, attrs={&#39;class&#39;: &#39;iPapers&#39;})
+        lis = uls.find_all(&#39;li&#39;)
+        date = soup.find(&#39;p&#39;, attrs={&#39;class&#39;: &#39;lastDate&#39;}).text
+        for li in lis:
+            title = li.find(&#39;a&#39;).text
+            result.append([date, title])
+    except Exception:
+        execMsg = badEnd
+    else:
+        execMsg = trueEnd
+
+    finally:
+        # ログ書き込み
+        logPut(name + &#34; &#34; + execMsg)
+
+    return result</code></pre>
+</details>
+</dd>
+<dt id="crawlingBid.spkyk"><code class="name flex">
+<span>def <span class="ident">spkyk</span></span>(<span>name, url)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>スクレイピング処理（札幌市教育委員会）</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>name</code></strong> :&ensp;<code>str</code></dt>
+<dd>参照先事業者名</dd>
+<dt><strong><code>url</code></strong> :&ensp;<code>str</code></dt>
+<dd>参照先URL</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>list</code></dt>
+<dd>収集結果リスト</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def spkyk(name, url):
+    &#34;&#34;&#34;スクレイピング処理（札幌市教育委員会）
+
+    Args:
+        name (str): 参照先事業者名
+        url (str): 参照先URL
+
+    Returns:
+        list: 収集結果リスト
+    &#34;&#34;&#34;
+
+    result = []
+
+    try:
+        site = requests.get(url)
+        soup = BeautifulSoup(site.content, &#34;html.parser&#34;)
+
+        divid = soup.find(&#39;div&#39;, id=&#34;tmp_contents&#34;)
+        uls = divid.find(&#39;ul&#39;)
+        lis = uls.find_all(&#39;li&#39;)
+        date = soup.find(id=&#34;tmp_update&#34;).text
+        for li in lis:
+            if li.text == &#39;現在公募中の案件はありません&#39;:
+                break
+            else:
+                title = li.find(&#39;a&#39;).text
+                result.append([date, title])
+    except Exception:
+        execMsg = badEnd
+    else:
+        execMsg = trueEnd
+
+    finally:
+        # ログ書き込み
+        logPut(name + &#34; &#34; + execMsg)
+
+    return result</code></pre>
+</details>
+</dd>
+<dt id="crawlingBid.spmdu"><code class="name flex">
+<span>def <span class="ident">spmdu</span></span>(<span>name, url)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>スクレイピング処理（札幌医科大学）</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>name</code></strong> :&ensp;<code>str</code></dt>
+<dd>参照先事業者名</dd>
+<dt><strong><code>url</code></strong> :&ensp;<code>str</code></dt>
+<dd>参照先URL</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>list</code></dt>
+<dd>収集結果リスト</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def spmdu(name, url):
+    &#34;&#34;&#34;スクレイピング処理（札幌医科大学）
+
+    Args:
+        name (str): 参照先事業者名
+        url (str): 参照先URL
+
+    Returns:
+        list: 収集結果リスト
+    &#34;&#34;&#34;
+
+    result = []
+
+    try:
+        site = requests.get(url)
+        soup = BeautifulSoup(site.content, &#34;html.parser&#34;)
+
+        uls = soup.find(&#39;ul&#39;, attrs={&#39;class&#39;: &#39;entry&#39;})
+        lis = uls.find_all(&#39;li&#39;)
+        for li in lis:
+            date = li.find(&#39;time&#39;).text
+            title = li.find(&#39;p&#39;).text
+            result.append([date, title])
+    except Exception:
+        execMsg = badEnd
+    else:
+        execMsg = trueEnd
+
+    finally:
+        # ログ書き込み
+        logPut(name + &#34; &#34; + execMsg)
+
+    return result</code></pre>
+</details>
+</dd>
+<dt id="crawlingBid.spsdk"><code class="name flex">
+<span>def <span class="ident">spsdk</span></span>(<span>name, url)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>スクレイピング処理（札幌市水道局）</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>name</code></strong> :&ensp;<code>str</code></dt>
+<dd>未使用</dd>
+<dt><strong><code>url</code></strong> :&ensp;<code>str</code></dt>
+<dd>参照先URL</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>list</code></dt>
+<dd>収集結果リスト</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def spsdk(name, url):
+    &#34;&#34;&#34;スクレイピング処理（札幌市水道局）
+
+    Args:
+        name (str): 未使用
+        url (str): 参照先URL
+
+    Returns:
+        list: 収集結果リスト
+    &#34;&#34;&#34;
+
+    # ChromeDriver読み込み
+    driver = webdriver.Chrome(resource_path(&#39;./driver/chromedriver.exe&#39;))
+
+    # 10秒待機
+    driver.implicitly_wait(10)  # seconds
+
+    # トップページを開く
+    driver.get(url)
+
+    # トップページが開いた状態から、電子入札ボタンを押下
+    dns_click = getCsvPath(&#39;spsdk_dns1&#39;)
+    driver.get(dns_click)
+
+    # メニューフレームに操作を移行する
+    iframe = driver.find_element_by_name(&#39;menu_Frm&#39;)
+    driver.switch_to.frame(iframe)
+
+    # 案件画面から、メニューフレームの物品タグを開く
+    element_bpn = driver.find_element_by_id(&#39;menuObj_1&#39;)
+    element_bpn.click()
+
+    # 案件画面から、物販入札リスト画面への繊維タブ情報を取得し、疑似的に押下する
+    element = driver.find_element_by_id(&#39;menuObj_4&#39;)
+    element.click()
+
+    # もとのフレームに戻る
+    driver.switch_to.default_content()
+
+    # 20秒待機
+    driver.implicitly_wait(20)  # seconds
+
+    # 表示された画面から、メインフレームに操作を移行する
+    nframe = driver.find_element_by_name(&#39;mainfrm&#39;)
+    driver.switch_to.frame(nframe)
+
+    # 案件ページへのリンクが貼られた要素一覧を取得
+    ankn_tags = driver.find_elements_by_class_name(&#39;SUBSTANCE_ROW_NB&#39;)
+    result = []
+    aa_cnt = 1
+    for ankn_tag in ankn_tags:
+        # aタグが埋め込まれている場合
+        if aa_cnt == 1:
+            aas = ankn_tag.find_elements_by_tag_name(&#39;a&#39;)
+
+            if len(aas) != 0:
+                # aタグをクリック
+                ankn_tag.find_element_by_tag_name(&#39;a&#39;).click()
+
+                # 10秒待機
+                driver.implicitly_wait(10)  # seconds
+
+                # もとのフレームに戻る
+                driver.switch_to.default_content()
+
+                # 表示された画面から、メインフレームに操作を移行する
+                pframe = driver.find_element_by_name(&#39;mainfrm&#39;)
+                driver.switch_to.frame(pframe)
+
+                # 案件一覧が表示されているテーブルを取得
+                table = driver.find_element_by_class_name(&#39;borderTable.group&#39;)
+
+                # テーブルから、案件が記載された行一覧を取得
+                rows = table.find_elements_by_tag_name(&#39;tr&#39;)
+                cnt = 1
+                for row in rows:
+                    # 3行目まではヘッダー
+                    if row.text != &#39;&#39;:
+                        if cnt &gt; 2:
+                            if cnt % 2 != 0:  # 奇数行から案件番号、案件名を取得
+                                tds = row.find_elements_by_tag_name(&#39;td&#39;)
+                                ankn_no = tds[1].text
+                                ankn_nm = tds[2].text
+                            else:  # 偶数行から公示日を取得
+                                tds = row.find_elements_by_tag_name(&#39;td&#39;)
+                                date = tds[3].text
+                                result.append([date, ankn_no + &#39;_&#39; + ankn_nm])
+                        cnt = cnt + 1
+                aa_cnt = aa_cnt + 1
+
+    return result</code></pre>
+</details>
+</dd>
+<dt id="crawlingBid.spsmk"><code class="name flex">
+<span>def <span class="ident">spsmk</span></span>(<span>url)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>スクレイピング処理（札幌市総務局）</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>url</code></strong> :&ensp;<code>str</code></dt>
+<dd>参照先URL</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>list</code></dt>
+<dd>収集結果リスト</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def spsmk(url):
+    &#34;&#34;&#34;スクレイピング処理（札幌市総務局）
+
+    Args:
+        url (str): 参照先URL
+
+    Returns:
+        list: 収集結果リスト
+    &#34;&#34;&#34;
+
+    site = requests.get(url)
+    soup = BeautifulSoup(site.content, &#34;html.parser&#34;)
+
+    divid = soup.find(&#39;div&#39;, id=&#34;tmp_contents&#34;)
+    uls = divid.find(&#39;ul&#39;)
+    lis = uls.find_all(&#39;li&#39;)
+    date = soup.find(id=&#34;tmp_update&#34;).text
+    result = []
+    for li in lis:
+        if li.text == &#39;現在公募中の案件はありません&#39;:
+            break
+        else:
+            title = li.find(&#39;a&#39;).text
+            result.append([date, title])
+
+    return result</code></pre>
+</details>
+</dd>
+<dt id="crawlingBid.target_click"><code class="name flex">
+<span>def <span class="ident">target_click</span></span>(<span>url, tag_type, target)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>ボタン押下処理</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>url</code></strong> :&ensp;<code>str</code></dt>
+<dd>操作するURLアドレス</dd>
+<dt><strong><code>tag_type</code></strong> :&ensp;<code>str</code></dt>
+<dd>ボタンの要素種別(class、id、href&hellip;)</dd>
+<dt><strong><code>target</code></strong> :&ensp;<code>str</code></dt>
+<dd>ボタンの要素名(class名、id名等)</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def target_click(url, tag_type, target):
+    &#34;&#34;&#34;ボタン押下処理
+
+    Args:
+        url (str): 操作するURLアドレス
+        tag_type (str): ボタンの要素種別(class、id、href...)
+        target (str): ボタンの要素名(class名、id名等)
+    &#34;&#34;&#34;
+    # ChromeDriver読み込み
+    driver = webdriver.Chrome(resource_path(&#39;./driver/chromedriver.exe&#39;))
+
+    # 10秒待機
+    driver.implicitly_wait(10)  # seconds
+
+    # 押下対象画面を開く
+    driver.get(url)
+    # 対象がclass
+    if tag_type == &#39;class&#39;:
+        element = driver.find_element_by_class_name(target)
+        element.click()
+    # 対象がid
+    elif tag_type == &#39;id&#39;:
+        element = driver.find_element_by_id(target)
+        element.click()
+    # href押下
+    elif tag_type == &#39;href&#39;:
+        pass
+    # その他
+    else:
+        element = driver.find_element_by_name(target)</code></pre>
+</details>
+</dd>
+</dl>
+</section>
+<section>
+</section>
+</article>
+<nav id="sidebar">
+<h1>Index</h1>
+<div class="toc">
+<ul></ul>
+</div>
+<ul id="index">
+<li><h3><a href="#header-functions">Functions</a></h3>
+<ul class="two-column">
+<li><code><a title="crawlingBid.getCsvPath" href="#crawlingBid.getCsvPath">getCsvPath</a></code></li>
+<li><code><a title="crawlingBid.hkd" href="#crawlingBid.hkd">hkd</a></code></li>
+<li><code><a title="crawlingBid.logPut" href="#crawlingBid.logPut">logPut</a></code></li>
+<li><code><a title="crawlingBid.main" href="#crawlingBid.main">main</a></code></li>
+<li><code><a title="crawlingBid.moveCSVFile" href="#crawlingBid.moveCSVFile">moveCSVFile</a></code></li>
+<li><code><a title="crawlingBid.noneUrl" href="#crawlingBid.noneUrl">noneUrl</a></code></li>
+<li><code><a title="crawlingBid.poly" href="#crawlingBid.poly">poly</a></code></li>
+<li><code><a title="crawlingBid.resource_path" href="#crawlingBid.resource_path">resource_path</a></code></li>
+<li><code><a title="crawlingBid.scraping" href="#crawlingBid.scraping">scraping</a></code></li>
+<li><code><a title="crawlingBid.sphsptl" href="#crawlingBid.sphsptl">sphsptl</a></code></li>
+<li><code><a title="crawlingBid.spkhtknst" href="#crawlingBid.spkhtknst">spkhtknst</a></code></li>
+<li><code><a title="crawlingBid.spkyk" href="#crawlingBid.spkyk">spkyk</a></code></li>
+<li><code><a title="crawlingBid.spmdu" href="#crawlingBid.spmdu">spmdu</a></code></li>
+<li><code><a title="crawlingBid.spsdk" href="#crawlingBid.spsdk">spsdk</a></code></li>
+<li><code><a title="crawlingBid.spsmk" href="#crawlingBid.spsmk">spsmk</a></code></li>
+<li><code><a title="crawlingBid.target_click" href="#crawlingBid.target_click">target_click</a></code></li>
+</ul>
+</li>
+</ul>
+</nav>
+</main>
+<footer id="footer">
+<p>Generated by <a href="https://pdoc3.github.io/pdoc" title="pdoc: Python API documentation generator"><cite>pdoc</cite> 0.10.0</a>.</p>
+</footer>
+</body>
+</html>
