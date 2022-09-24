@@ -21,12 +21,16 @@ def get_datetime():
     return d
 
 
-def lambda_handler(event, context):
-    """lambda起動ハンドラ
+def sendMail(s3_record):
+    """メール送信処理
+
+        参考(AWS公式)
+        https://docs.aws.amazon.com/ses/latest/dg/
+            send-an-email-using-sdk-programmatically.html#
+                :~:text=Ruby-,Python,-This%20topic%20shows
 
     Args:
-        event (any): 更新されたS3のファイル（キー）情報
-        context (any): 未使用
+        s3_record (dict): S3ファイル情報
     """
 
     # Replace sender@example.com with your "From" address.
@@ -48,9 +52,8 @@ def lambda_handler(event, context):
 
     # Attach File Download from S3
     s3 = boto3.resource('s3')
-    rec = event['Records'][0]
-    bucket = rec['s3']['bucket']['name']
-    key = rec['s3']['object']['key']
+    bucket = s3_record['bucket']['name']
+    key = s3_record['object']['key']
     send_file = '/tmp/' + key[key.rfind('/') + 1:]
     s3.Bucket(bucket).download_file(key, send_file)
 
@@ -134,3 +137,15 @@ def lambda_handler(event, context):
     else:
         print("Email sent! Message ID:"),
         print(response['ResponseMetadata']['RequestId'])
+
+
+def lambda_handler(event, context):
+    """lambda起動ハンドラ
+
+    Args:
+        event (any): 更新されたS3のファイル情報
+        context (any): 未使用
+    """
+
+    # メール送信
+    sendMail(event['Records'][0]['s3'])

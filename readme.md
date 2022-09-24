@@ -10,9 +10,9 @@ AWSを使用した、案件情報サイトへの定期クローリングと、�
 ![通知メールCSV](./assets/img/mail_csv.png)
 
 ## 構築の流れ
-- lambdaレイヤの作成と配置
-- S3バケットの作成とファイル配置
-- 「クローリング」lambda関数の作成と配置
+- [lambdaレイヤの作成と配置](#lambdaレイヤの作成と配置)
+- [S3バケットの作成とファイル配置](#s3バケットの作成とファイル配置)
+- [「クローリング」lambda関数の作成と配置](#クローリングlambda関数の作成と配置)
 - 「通知」lambda関数の作成と配置、Amazon SES設定
 - Amazon EventBridgeのスケジュール設定
 
@@ -125,7 +125,9 @@ AWSへのレイヤの登録方法を以下に示します。
 
 ### 「クローリング」lambda関数の作成と配置
 
-![lambdafunc](/assets/img/awsLambdafunc.png)
+
+
+![crawling](/assets/img/structure_crawling.png)
 
 クローリングを実行するlambda関数を作成します。コードは、以下のパスの内容となります。
 
@@ -144,6 +146,10 @@ AWSへのレイヤの登録方法を以下に示します。
 <br>
 
 #### lambda関数の新規作成
+
+AWS lambdaにクローリングlambdaを新規作成します。
+
+![lambdafunc](/assets/img/awsLambdafunc.png)
 
 以下の手順で、lambda関数を新たに構築します。
 
@@ -169,9 +175,88 @@ AWSへのレイヤの登録方法を以下に示します。
 
 #### lambda関数の設定変更
 
-- zipをアップロード
-- レイヤの選択
+作成したlambda関数に対して、次の設定を行います。
+
+- lambdaレイヤの設定
 - 環境変数の設定
-- 設定変更
-  - ロールポリシーのアタッチ(AmazonS3FullAccess)
-  -
+- ロールポリシーのアタッチ
+
+lambda関数編集画面の下部にある「レイヤ」で、アップロードしたレイヤを選択します。
+
+![lambdaLayer](/assets/img/awsLambdaLayer.png)
+
+- 「レイヤーの追加」をクリックします。
+- 「レイヤーの追加」画面で、「カスタムレイヤー」を選択。
+- 「カスタムレイヤー」で、[前の手順](#レイヤの配置) でアップロードしたレイヤを選択。
+
+上記の手順で、`selenium_layer.zip`と`headless.zip`の２つのレイヤを追加します。
+
+<br>
+
+次に、環境変数を設定します。
+
+![env](/assets/img/awsLambdaEnviron.png)
+
+- lamdba編集画面で、「設定」タブを選択する
+- 左のメニューから「環境変数」を選択する
+- 右の「編集」ボタンをクリック
+- 「環境変数の編集」画面で、「環境変数の編集」ボタンをクリックして次の２つを登録する。
+  |キー|値|
+  |--|--|
+  |on_lambda|True|
+  |s3_bucket|ksap-nyusatu-crawling|
+
+これらの環境変数は、lambda関数の中で参照しています。   
+
+<br>
+
+<h5>
+「on_lambda」環境変数は、実行環境がAWSなのか、オンプレミスなのかを区分するために作っています(キーがあるかどうかで判定しているので、値はなんでも良いです)。これによって、ファイル群を参照するフォルダを読み分けています。</h5>
+
+  |<h5>環境|<h5>フォルダ|
+  |--|--|
+  |<h5>クラウド|<h5>"/tmp/"|
+  |<h5>オンプレミス|<h5>カレントフォルダ "os.getcwd() + '/'"|
+
+
+最後に、lambdaの実行ロールに、ポリシーをアタッチします。
+
+![awsLambdaIAM](/assets/img/awsLambdaIAM.png)
+
+- lamdba編集画面で、「設定」タブを選択する
+- 左のメニューから「アクセス権限」を選択する
+- 右の「実行ロール」に表示されている「ロール名」のハイパーリンクをクリックする。
+- 新しいタブでIAMサービス画面が開かれるので、「許可ポリシー」の右にある「許可を追加」をクリックして「ポリシーをアタッチ」を選択する。
+- 一覧で表示されるポリシーから、「AmazonS3FullAccess」を選択して「ポリシーをアタッチ」ボタンをクリックする。
+
+これにより、lambda関数からS3のファイルを読み込んだり、書き込んだりすることができるようになります。
+
+以上で、「クローリング」lambda関数の作成と配置は終了です。
+
+<br>
+
+### 「通知」lambda関数の作成と配置、Amazon SES設定
+
+クローリングlambdaが実行されると、S3バケット内の「/mail_send」内にcsvファイルが作られます。  
+
+csvが作られることをトリガーにして、予め決められた配信先にメール通知が行われるよう、S3、lambda、SESの連携を行います。
+
+![notify](/assets/img/structure_sendmail.png)
+
+#### SESで通知設定を行う
+
+「Amazon Simple Email Service」（Amazon SES）を使用して、AWSからEmail通知を行うためのメールアドレス認証を行います。通知の「送信元」には、ドメインとメールアドレスの２つから選択することができますが、今回は後者を選択し、特定のメールアドレスから送信されたテイにします。
+
+- AWSコンソールマネジメントにログインする。
+- AWSのサービス一覧で「Amazon Simple Email Service」を選択する。
+- 左側の「Verified identities」を選び、「Create identity」ボタンをクリックする。
+- 「Create identity」画面で、「Identity type」に「Email address」を選択。
+- 「Email address」欄に、送信元のメールアドレスを入力して「Create identity」をクリック。
+
+この後、登録したメールアドレスに、以下の通知メールが送られてきます。モザイクされたハイパーリンクをクリックすることで、認証が行われますので、クリックしてください。
+
+![awsSESmail](/assets/img/awsSESmail.png)
+
+
+
+
